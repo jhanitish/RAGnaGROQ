@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css?family=Warnes&display=swap');
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.glow {
+  font-size: 50px;
+  text-align: center;
+  font-family: 'Warnes', cursive;
+  color: #fff;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
+  animation: blinker 5s linear infinite;
+}
+
+.glow.dark {
+  color: grey;
+  text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Light theme color classes */
+.text-amber { color: #fde047 !important; }
+.border-amber { border-color: #fde047 !important; }
+
+.text-blue { color: #2196f3; }
+.border-blue { border-color: #2196f3; }
+
+.text-brown { color: #795548 !important; }
+.border-brown { border-color: #795548 !important; }
+
+.text-cyan { color: #00bcd4 !important; }
+.border-cyan { border-color: #00bcd4 !important; }
+
+.text-deeporange { color: #ff5722 !important; }
+.border-deeporange { border-color: #ff5722 !important; }
+
+.text-deeppurple { color: #673AB7 !important; }
+.border-deeppurple { border-color: #673AB7 !important; }
+
+.text-green { color: #4caf50 !important; }
+.border-green { border-color: #4caf50 !important; }
+
+.text-grey { color: #607d8b !important; }
+.border-grey { border-color: #607d8b !important; }
+
+.text-indigo { color: #3f51b5 !important; }
+.border-indigo { border-color: #3f51b5 !important; }
+
+.text-lightblue { color: #03a9f4 !important; }
+.border-lightblue { border-color: #03a9f4 !important; }
+
+.text-pink { color: #E91E63 !important; }
+.border-pink { border-color: #E91E63 !important; }
+
+.text-purple { color: #9C27B0 !important; }
+.border-purple { border-color: #9C27B0 !important; }
+
+.text-red { color: #F44336 !important; }
+.border-red { border-color: #F44336 v; }
+
+.text-teal { color: #009688 !important; }
+.border-teal { border-color: #009688 !important; }
+
+/* Dark theme color classes with reduced opacity */
+.dark .text-amber { color: rgba(255, 193, 7, 0.7) !important; }
+.dark .border-amber { border-color: rgba(255, 193, 7, 0.7) !important; }
+
+.dark .text-blue { color: rgba(33, 150, 243, 0.7); }
+.dark .border-blue { border-color: rgba(33, 150, 243, 0.7); }
+
+.dark .text-brown { color: rgba(121, 85, 72, 0.7) !important; }
+.dark .border-brown { border-color: rgba(121, 85, 72, 0.7) !important; }
+
+.dark .text-cyan { color: rgba(0, 188, 212, 0.7) !important; }
+.dark .border-cyan { border-color: rgba(0, 188, 212, 0.7) !important; }
+
+.dark .text-deeporange { color: rgba(255, 87, 34, 0.7) !important; }
+.dark .border-deeporange { border-color: rgba(255, 87, 34, 0.7) !important; }
+
+.dark .text-deeppurple { color: rgba(103, 58, 183, 0.7) !important; }
+.dark .border-deeppurple { border-color: rgba(103, 58, 183, 0.7) !important; }
+
+.dark .text-green { color: rgba(76, 175, 80, 0.7) !important; }
+.dark .border-green { border-color: rgba(76, 175, 80, 0.7) !important; }
+
+.dark .text-grey { color: rgba(96, 125, 139, 0.7) !important; }
+.dark .border-grey { border-color: rgba(96, 125, 139, 0.7) !important; }
+
+.dark .text-indigo { color: rgba(63, 81, 181, 0.7) !important; }
+.dark .border-indigo { border-color: rgba(63, 81, 181, 0.7) !important; }
+
+.dark .text-lightblue { color: rgba(3, 169, 244, 0.7) !important; }
+.dark .border-lightblue { border-color: rgba(3, 169, 244, 0.7) !important; }
+
+.dark .text-pink { color: rgba(233, 30, 99, 0.7) !important; }
+.dark .border-pink { border-color: rgba(233, 30, 99, 0.7) !important; }
+
+.dark .text-purple { color: rgba(156, 39, 176, 0.7) !important; }
+.dark .border-purple { border-color: rgba(156, 39, 176, 0.7) !important; }
+
+.dark .text-red { color: rgba(244, 67, 54, 0.7) !important; }
+.dark .border-red { border-color: rgba(244, 67, 54, 0.7) !important; }
+
+.dark .text-teal { color: rgba(0, 150, 136, 0.7); }
+.dark .border-teal { border-color: rgba(0, 150, 136, 0.7); }
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}

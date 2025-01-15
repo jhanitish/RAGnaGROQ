@@ -1,0 +1,24 @@
+# dependencies
+backend/venv/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+.venv/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# IDE and editor settings
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
