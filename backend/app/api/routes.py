@@ -20,9 +20,7 @@ class ChatRequest(BaseModel):
 async def validate_key(data: ApiKeyValidation):
     """Endpoint to validate Groq API key"""
     try:
-        # Initialize search agent with API key to test it
         search_agent = SearchAgent(data.api_key)
-        # Try to initialize the LLM to verify the key
         await search_agent.validate_api_key()
 
         return {"status": "valid", "message": "API key is valid"}
@@ -35,14 +33,10 @@ async def validate_key(data: ApiKeyValidation):
 @router.post("/chat", response_model=ChatResponse)
 async def chat_endpoint(request: ChatRequest):
     try:
-        # Process messages and get response
         messages = request.messages
-
-        # Initialize search agent with the validated API key
         search_agent = SearchAgent(request.api_key)
-        
         response = await search_agent.process_messages(messages)
-
+        
         return {"role": "assistant", "content": response}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -55,6 +49,7 @@ async def chat_endpoint(request: ChatRequest):
     try:
         handler = LeetcodeAgent(request.api_key)
         messages = [{"role": msg.role, "content": msg.content} for msg in request.messages]
+        
         return await handler.leet_chat(messages)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -63,6 +58,7 @@ async def chat_endpoint(request: ChatRequest):
 async def problem_hint_endpoint(problem_id: int, request: ProblemRequest):
     try:
         handler = LeetcodeAgent(request.api_key)
+        
         return await handler.get_problem_hint(problem_id)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -71,6 +67,7 @@ async def problem_hint_endpoint(problem_id: int, request: ProblemRequest):
 async def topic_problems_endpoint(request: TopicRequest):
     try:
         handler = LeetcodeAgent(request.api_key)
+        
         return await handler.get_topic_problems(
             request.topic.value,
             request.difficulty.value if request.difficulty else None
@@ -82,6 +79,7 @@ async def topic_problems_endpoint(request: TopicRequest):
 async def code_review_endpoint(request: CodeReviewRequest):
     try:
         handler = LeetcodeAgent(request.api_key)
+        
         return await handler.review_code(request.language, request.code, request.problem_id)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -91,6 +89,7 @@ async def study_plan_endpoint(request: StudyPlanRequest):
     try:
         handler = LeetcodeAgent(request.api_key)
         topics = [topic.value for topic in request.topics]
+        
         return await handler.create_study_plan(
             topics, request.duration_weeks,
             request.difficulty.value if request.difficulty else None
@@ -102,6 +101,7 @@ async def study_plan_endpoint(request: StudyPlanRequest):
 async def pattern_recognition_endpoint(request: CodeReviewRequest):
     try:
         handler = LeetcodeAgent(request.api_key)
+        
         return await handler.identify_pattern(request.code)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -110,6 +110,7 @@ async def pattern_recognition_endpoint(request: CodeReviewRequest):
 async def daily_challenge_endpoint(api_key: str):
     try:
         handler = LeetcodeAgent(api_key)
+        
         return await handler.get_daily_challenge()
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

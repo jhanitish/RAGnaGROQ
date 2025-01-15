@@ -9,10 +9,11 @@ load_dotenv()
 class Settings(BaseModel):
     # API Configuration
     API_V1_STR: str = "/api/v1"
-    PROJECT_NAME: str = "SearchChat"
+    PROJECT_NAME: str = "RAGnaGROQ"
     
     # CORS Configuration
-    BACKEND_CORS_ORIGINS: List[str] = ["http://localhost:3000"]
+    # BACKEND_CORS_ORIGINS: List[str] = ["http://localhost:3000"]
+    BACKEND_CORS_ORIGINS: List[str] = ["*"]
     
     # Model Configuration
     DEFAULT_MODEL: str = "llama3-8b-8192"
