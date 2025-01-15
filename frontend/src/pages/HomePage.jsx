@@ -12,17 +12,17 @@ const HomePage = () => {
 
     const pages = [
       {
-        title: 'Search Engine',
-        route: '/search-engine',
-        description: 'Educational Gen AI Assistant using Llama3-8b-8192',
-        imageUrl: eduSearch,
-        status: 'available',
-      },
-      {
         title: 'Leetcode Assistant',
         route: '/leetcode-bot',
         description: 'Leetcode Gen AI Assistant using Mixtral-8x7b-32768',
         imageUrl: leetcode,
+        status: 'available',
+      },
+      {
+        title: 'Search Engine',
+        route: '/search-engine',
+        description: 'Educational Gen AI Assistant using Llama3-8b-8192',
+        imageUrl: eduSearch,
         status: 'available',
       },
       {

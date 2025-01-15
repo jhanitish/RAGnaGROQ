@@ -4,10 +4,11 @@ import { Input } from '../components/ui/Input';
 import { Button } from '../components/ui/Button';
 import { Alert, AlertDescription } from '../components/ui/Alert';
 import { MessageCircle, Search, Settings, Loader2, Key } from 'lucide-react';
-import { Bot, User } from 'lucide-react';  // Add icons for robot and user
+import { Bot, User } from 'lucide-react';
 
 
-const API_URL = 'http://localhost:8000/api';
+// const API_URL = 'http://localhost:8000/api';
+const API_URL = 'https://ragnagroq.onrender.com/api';
 
 const SearchEngine = () => {
   const [messages, setMessages] = useState([

@@ -12,7 +12,8 @@ import {
 } from 'lucide-react';
 import TabContent from '../components/ui/TabContent';
 
-const API_URL = 'http://localhost:8000/api';
+// const API_URL = 'http://localhost:8000/api';
+const API_URL = 'https://ragnagroq.onrender.com/api';
 
 const LeetCodeAssistant = () => {
   const [activeTab, setActiveTab] = useState('hints');
