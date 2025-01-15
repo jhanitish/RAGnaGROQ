@@ -17,17 +17,17 @@ Welcome to the Gen AI Educational and Utility Assistant project! This platform p
    - **Status**: Available
 
 ### 3. **PDF Text Summarization**
-   - **Route**: `/search-engine`
+   - **Route**: `/text-summerize`
    - **Description**: Quickly summarize the content of large PDF documents.
-   - **Status**: Coming Soon
+   - **Status**: Work in progress
 
 ### 4. **ATS Resume Assistant**
-   - **Route**: `/chatbot-demo`
+   - **Route**: `/ats`
    - **Description**: An assistant to analyze and optimize resumes for ATS (Applicant Tracking Systems).
    - **Status**: Coming Soon
 
 ### 5. **Pets Nutrition Assistant**
-   - **Route**: `/chatbot-demo`
+   - **Route**: `/pet-nutrition`
    - **Description**: An AI assistant to guide pet owners on optimal nutrition for their pets.
    - **Status**: Coming Soon
 
@@ -45,7 +45,7 @@ To use the platform, follow these steps:
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/gen-ai-assistant.git
+   git clone https://github.com/jhanitish/RAGnaGROQ.git
    cd RAGnaGROQ
    cd frontend
    npm install
