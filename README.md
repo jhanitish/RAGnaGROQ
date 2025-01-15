@@ -46,10 +46,11 @@ To use the platform, follow these steps:
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/gen-ai-assistant.git
-   cd gen-ai-assistant
-2. cd frontend
-3. npm install
-4. npm start
-5. open a new terminal
-6. cd backend
-7. pip install -r requirements.txt
+   cd RAGnaGROQ
+   cd frontend
+   npm install
+   npm start
+   open a new terminal
+   cd backend
+   pip install -r requirements.txt
+   python run.py
