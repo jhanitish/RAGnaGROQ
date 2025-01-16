@@ -151,7 +151,7 @@ const HomePage = () => {
             `text-blue border-blue p-4 text-center`
         )}
       >
-        Made with ❤️ by Nitish Jha
+        Made with ❤️ by <a href="https://www.linkedin.com/in/pingnitish/" rel="noreferrer" target="_blank">Nitish Jha</a>
       </footer>
     </div>
   );
