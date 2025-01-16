@@ -104,8 +104,8 @@ const TabContent = ({
           <div className="space-y-4">
             <div className="flex gap-2">
               <input
-                type="number"
-                placeholder="Enter LeetCode Problem ID"
+                type="text"
+                placeholder="Enter LeetCode Problem"
                 value={problemId}
                 onChange={(e) => setProblemId(e.target.value)}
                 className="flex-1 p-2 border rounded-md"

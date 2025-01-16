@@ -54,7 +54,7 @@ class LeetcodeAgent:
         except Exception as e:
             raise HTTPException(status_code=500, detail=str(e))
 
-    async def get_problem_hint(self, problem_id: int):
+    async def get_problem_hint(self, problem_id: str):
         problem_prompt = f"Provide hints for LeetCode problem #{problem_id}. Start with understanding the problem, then provide progressive hints without revealing the complete solution."
         messages = [{"role": "user", "content": problem_prompt}]
         try:

@@ -92,10 +92,10 @@ const LeetCodeAssistant = () => {
 
     setIsLoading(true);
     try {
-      const response = await fetch(`${API_URL}/problem-hint/${problemId}`, {
+      const response = await fetch(`${API_URL}/problem-hint`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ api_key: apiKey, problem_id: parseInt(problemId) }),
+        body: JSON.stringify({ api_key: apiKey, problem: problemId }),
       });
       const data = await response.json();
       setProblemHints(data.hints);

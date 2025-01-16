@@ -54,12 +54,12 @@ async def chat_endpoint(request: ChatRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@router.post("/problem-hint/{problem_id}")
-async def problem_hint_endpoint(problem_id: int, request: ProblemRequest):
+@router.post("/problem-hint")
+async def problem_hint_endpoint(request: ProblemRequest):
     try:
         handler = LeetcodeAgent(request.api_key)
         
-        return await handler.get_problem_hint(problem_id)
+        return await handler.get_problem_hint(request.problem)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 

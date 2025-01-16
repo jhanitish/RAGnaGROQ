@@ -48,7 +48,7 @@ class ChatRequest(BaseModel):
     settings: Optional[dict] = None
 
 class ProblemRequest(BaseModel):
-    problem_id: int
+    problem: str
     api_key: str
 
 class TopicRequest(BaseModel):
