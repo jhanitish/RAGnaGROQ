@@ -24,7 +24,6 @@ class SearchAgent:
                 streaming=True
             )
             
-            # Initialize search tools
             self.arxiv_wrapper = ArxivAPIWrapper(top_k_results=1, doc_content_chars_max=200)
             self.arxiv = ArxivQueryRun(api_wrapper=self.arxiv_wrapper)
             
@@ -33,7 +32,6 @@ class SearchAgent:
             
             self.search = DuckDuckGoSearchRun(name="Search")
 
-            # Define prompt template
             self.prompt_template = PromptTemplate(
                 input_variables=["query"],
                 template=(
@@ -45,13 +43,7 @@ class SearchAgent:
                 )
             )
             
-            # Initialize agent
             self.tools = [self.arxiv, self.wiki]
-            # self.agent = create_react_agent(
-            #     tools=[],
-            #     llm=self.llm,
-            #     verbose=True
-            # )
             self.agent = initialize_agent(
                 self.tools,
                 self.llm,
@@ -63,7 +55,6 @@ class SearchAgent:
         """Validate the API key by attempting to initialize the LLM"""
         try:
             await self.initialize_llm()
-            # Try a simple completion to verify the key works
             test_response = await asyncio.to_thread(
                 self.llm.predict,
                 "test"
@@ -75,29 +66,15 @@ class SearchAgent:
     async def process_messages(self, messages: List[ChatMessage]) -> str:
         """Process a list of messages and return a response"""
         try:
-
             await self.initialize_llm()
-            
-            # Extract the latest query from the user message
             query = messages[-1].content.strip()
-            
-            # Generate the prompt using the template
             custom_prompt = self.prompt_template.format(query=query)
-            
-            # Format messages for the agent
             formatted_messages = [{"role": "system", "content": custom_prompt}]
-            
-            
-            # # Run agent and get response
-            # response = await asyncio.to_thread(
-            #     self.agent.run,
-            #     formatted_messages
-            # )
-
             response = await asyncio.to_thread(
-                self.agent.run,  # Updated from .run to .invoke
+                self.agent.run,
                 formatted_messages
             )
+
             return response
         except Exception as e:
             raise Exception(f"Error processing messages: {str(e)}")
@@ -106,19 +83,14 @@ class SearchAgent:
         """Stream the response for a list of messages"""
         try:
             await self.initialize_llm()
-
             formatted_messages = [
                 {"role": msg.role, "content": msg.content}
                 for msg in messages
             ]
-
-            # Get streaming response from agent
             async for chunk in self.agent.astream(formatted_messages):
                 try:
-                    # Handle final output field
                     if "output" in chunk:
                         yield chunk["output"]
-                    # Handle intermediate steps and messages
                     elif "messages" in chunk:
                         for message in chunk["messages"]:
                             if "content" in message:

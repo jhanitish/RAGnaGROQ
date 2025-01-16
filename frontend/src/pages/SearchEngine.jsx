@@ -3,14 +3,17 @@ import { CardHeader, CardTitle, CardContent } from '../components/ui/Card';
 import { Input } from '../components/ui/Input';
 import { Button } from '../components/ui/Button';
 import { Alert, AlertDescription } from '../components/ui/Alert';
-import { MessageCircle, Search, Settings, Loader2, Key } from 'lucide-react';
-import { Bot, User } from 'lucide-react';
+import { MessageCircle, Search, Settings, Loader2, Key, XIcon, MenuIcon } from 'lucide-react';
+import MessageBubble from '../components/ui/MessageBubble';
+import clsx from 'clsx';
 
 
 // const API_URL = 'http://localhost:8000/api';
 const API_URL = 'https://ragnagroq-backend.onrender.com/api';
 
 const SearchEngine = () => {
+
+  const [isMobileSidebarOpen, setMobileSidebarOpen] = useState(false)
   const [messages, setMessages] = useState([
     { role: 'assistant', content: "Hi, I'm a chatbot who can search the ArXiv, Wikipedia and Web for education related assistant. Please submit your Groq API key to start chatting." }
   ]);
@@ -30,7 +33,7 @@ const SearchEngine = () => {
     scrollToBottom();
   }, [messages]);
 
-  const validateApiKey = async () => {
+  const handleApiValidation = async () => {
     if (!apiKey.trim()) {
       setError('Please enter an API key');
       return;
@@ -102,34 +105,34 @@ const SearchEngine = () => {
       setIsLoading(false);
     }
   };
-  
-  const MessageBubble = ({ message }) => (
-    <div className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'} mb-4`}>
-      <div className={`flex items-center gap-3`}>
-        {/* User or Bot Icon */}
-        {message.role === 'user' ? (
-          <User className="w-6 h-6 text-blue-500" />
-        ) : (
-          <Bot className="w-6 h-6 text-gray-500" />
-        )}
-        
-        {/* Message Bubble with Box Style */}
-        <div className={`max-w-3/4 p-4 rounded-lg border ${
-          message.role === 'user' 
-            ? 'bg-blue-50 border-blue-500 text-blue-900 ml-12' 
-            : 'bg-gray-50 border-gray-300 text-gray-900 mr-12'
-        }`}>
-          {message.content}
-        </div>
-      </div>
-    </div>
-  );
-  
 
+  const userClicked = () => {
+    setMobileSidebarOpen(!isMobileSidebarOpen)
+  }
+
+  const closeUserClicked = () => {
+    setMobileSidebarOpen(false)
+  }
+  
+  
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar */}
-      <div className="w-64 bg-white p-4 border-r">
+      <div 
+        className={clsx(
+          `${isMobileSidebarOpen ? 'show' : 'hide'} sidebar`,
+          `w-64 bg-white p-4 border-r 
+          fixed top-0 left-0 h-full 
+          md:relative
+          hidden`
+            )}
+      >
+        {/* Close Button for Mobile */}
+        <div className="flex justify-end md:hidden">
+                <Button onClick={closeUserClicked}>
+                  <XIcon size={20} />
+                </Button>
+              </div>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Settings size={20} />
@@ -144,10 +147,55 @@ const SearchEngine = () => {
               value={apiKey}
               onChange={(e) => setApiKey(e.target.value)}
               disabled={isKeyValidated}
-              className="m-0 mb-2"
+              className="mb-2"
             />
             <Button 
-              onClick={validateApiKey} 
+              onClick={handleApiValidation} 
+              disabled={isKeyValidated || isLoading}
+              className="w-full"
+            >
+              {isLoading ? (
+                <Loader2 className="w-4 h-4 animate-spin mr-2" />
+              ) : (
+                <Key className="w-4 h-4 mr-2" />
+              )}
+              {isKeyValidated ? 'API Key Validated' : 'Submit API Key'}
+            </Button>
+            {isKeyValidated && (
+              <Button 
+                variant="outline" 
+                onClick={() => {
+                  setIsKeyValidated(false);
+                  setApiKey('');
+                }}
+                className="w-full"
+              >
+                Reset API Key
+              </Button>
+            )}
+          </div>
+        </CardContent>
+      </div>
+
+      <div className="block hideSettings w-64 bg-white p-4 border-r">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Settings size={20} />
+            Settings
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            <Input
+              type="password"
+              placeholder="Enter Groq API Key"
+              value={apiKey}
+              onChange={(e) => setApiKey(e.target.value)}
+              disabled={isKeyValidated}
+              className="mb-2"
+            />
+            <Button 
+              onClick={handleApiValidation} 
               disabled={isKeyValidated || isLoading}
               className="w-full"
             >
@@ -178,6 +226,12 @@ const SearchEngine = () => {
       <div className="flex-1 flex flex-col">
         <div className="p-4 border-b bg-white">
           <h1 className="text-2xl font-bold flex items-center gap-2">
+          <Button
+            onClick={userClicked}
+            className="mr-2 md:hidden"
+          >
+            <MenuIcon size={20} />
+          </Button>
             <Search className="w-6 h-6" />
                 Educational Content Search from Arxiv, WikiPedia and Web
           </h1>

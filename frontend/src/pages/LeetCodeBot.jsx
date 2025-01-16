@@ -3,14 +3,16 @@ import { CardHeader, CardTitle, CardContent } from '../components/ui/Card';
 import { Input } from '../components/ui/Input';
 import { Button } from '../components/ui/Button';
 import { Alert, AlertDescription } from '../components/ui/Alert';
-import { Textarea } from '../components/ui/Textarea';
 import {
   Code2,
   Settings,
   Loader2,
   Key,
+  MenuIcon,
+  XIcon,
 } from 'lucide-react';
 import TabContent from '../components/ui/TabContent';
+import clsx from 'clsx';
 
 // const API_URL = 'http://localhost:8000/api';
 const API_URL = 'https://ragnagroq-backend.onrender.com/api';
@@ -24,7 +26,7 @@ const LeetCodeAssistant = () => {
     }
   ]);
   
-  const [input, setInput] = useState('');
+  const [isMobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [apiKey, setApiKey] = useState('');
   const [isKeyValidated, setIsKeyValidated] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -157,9 +159,31 @@ const LeetCodeAssistant = () => {
     }
   };
 
+  const userClicked = () => {
+    setMobileSidebarOpen(!isMobileSidebarOpen)
+  }
+
+  const closeUserClicked = () => {
+    setMobileSidebarOpen(false)
+  }
+
   return (
     <div className="flex h-screen bg-gray-100">
-      <div className="w-64 bg-white p-4 border-r">
+      <div 
+        className={clsx(
+          `${isMobileSidebarOpen ? 'show' : 'hide'} sidebar`,
+          `w-64 bg-white p-4 border-r 
+          fixed top-0 left-0 h-full 
+          md:relative
+          hidden`
+            )}
+      >
+        {/* Close Button for Mobile */}
+        <div className="flex justify-end md:hidden">
+                <Button onClick={closeUserClicked}>
+                  <XIcon size={20} />
+                </Button>
+              </div>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Settings size={20} />
@@ -188,6 +212,63 @@ const LeetCodeAssistant = () => {
               )}
               {isKeyValidated ? 'API Key Validated' : 'Submit API Key'}
             </Button>
+            {isKeyValidated && (
+              <Button 
+                variant="outline" 
+                onClick={() => {
+                  setIsKeyValidated(false);
+                  setApiKey('');
+                }}
+                className="w-full"
+              >
+                Reset API Key
+              </Button>
+            )}
+          </div>
+        </CardContent>
+      </div>
+
+      <div className="block hideSettings w-64 bg-white p-4 border-r">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Settings size={20} />
+            Settings
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            <Input
+              type="password"
+              placeholder="Enter Groq API Key"
+              value={apiKey}
+              onChange={(e) => setApiKey(e.target.value)}
+              disabled={isKeyValidated}
+              className="mb-2"
+            />
+            <Button 
+              onClick={handleApiValidation} 
+              disabled={isKeyValidated || isLoading}
+              className="w-full"
+            >
+              {isLoading ? (
+                <Loader2 className="w-4 h-4 animate-spin mr-2" />
+              ) : (
+                <Key className="w-4 h-4 mr-2" />
+              )}
+              {isKeyValidated ? 'API Key Validated' : 'Submit API Key'}
+            </Button>
+            {isKeyValidated && (
+              <Button 
+                variant="outline" 
+                onClick={() => {
+                  setIsKeyValidated(false);
+                  setApiKey('');
+                }}
+                className="w-full"
+              >
+                Reset API Key
+              </Button>
+            )}
           </div>
         </CardContent>
       </div>
@@ -195,6 +276,12 @@ const LeetCodeAssistant = () => {
       <div className="flex-1 flex flex-col">
         <div className="p-4 border-b bg-white">
           <h1 className="text-2xl font-bold flex items-center gap-2">
+          <Button
+  onClick={userClicked}
+  className="mr-2 md:hidden"
+>
+  <MenuIcon size={20} />
+</Button>
             <Code2 className="w-6 h-6" />
             LeetCode Gen AI Assistant
           </h1>

@@ -4,8 +4,6 @@ from typing import List
 import groq
 import asyncio
 
-
-# System prompts
 SYSTEM_PROMPTS = {
     "code_review": """You are a code review expert. Analyze the provided code for:
         1. Correctness and edge cases

@@ -46,6 +46,23 @@ code {
   }
 }
 
+.show.sidebar {
+  transform: translateX(0);
+  display: block;
+}
+.hide.sidebar {
+  transform: -translateX(100%);
+  display: hidden;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+
+  .hideSettings {
+    display: none !important;
+  }
+}
+
 /* Light theme color classes */
 .text-amber { color: #fde047 !important; }
 .border-amber { border-color: #fde047 !important; }
