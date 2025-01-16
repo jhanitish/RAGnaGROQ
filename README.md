@@ -32,6 +32,21 @@ Welcome to the Gen AI Educational and Utility Assistant project! This platform p
    - **Status**: Coming Soon
 
 ---
+## Technology Stack
+
+## Frontend
+- Javascript
+- React JS
+- Shadcn
+- Tailwind
+
+## Backend
+- Python
+- Groq
+- Langchain
+- Fastapi
+  
+---
 
 ## Getting Started
 
