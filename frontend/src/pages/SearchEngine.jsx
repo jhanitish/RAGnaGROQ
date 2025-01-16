@@ -8,7 +8,7 @@ import { Bot, User } from 'lucide-react';
 
 
 // const API_URL = 'http://localhost:8000/api';
-const API_URL = 'https://ragnagroq.onrender.com/api';
+const API_URL = 'https://ragnagroq-backend.onrender.com/api';
 
 const SearchEngine = () => {
   const [messages, setMessages] = useState([

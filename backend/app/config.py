@@ -13,7 +13,7 @@ class Settings(BaseModel):
     
     # CORS Configuration
     # BACKEND_CORS_ORIGINS: List[str] = ["http://localhost:3000"]
-    BACKEND_CORS_ORIGINS: List[str] = ["*"]
+    BACKEND_CORS_ORIGINS: List[str] = ["https://ragnagroq.onrender.com"]
     
     # Model Configuration
     DEFAULT_MODEL: str = "llama3-8b-8192"
