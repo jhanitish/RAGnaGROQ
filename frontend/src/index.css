@@ -27,6 +27,19 @@ code {
   text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
 }
 
+.subHeading {
+  color: black;
+  font-family: cursive;
+  text-transform: capitalize;
+  font-weight: 600;
+  font-size: 20px;
+  margin: 10px;
+}
+
+.dark.subHeading {
+  color: lemonchiffon;
+}
+
 @keyframes blinker {
   50% {
     opacity: 0;

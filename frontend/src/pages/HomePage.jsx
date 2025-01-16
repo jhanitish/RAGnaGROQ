@@ -69,9 +69,15 @@ const HomePage = () => {
                 `border-${switcherColor}`,
                 `text-blue border-blue`
               )}>GROQ</span>
+          <br />
+          <h2 className=""
+              className={clsx(
+                `${skinColor} subHeading`,
+            )}
+          >
+            Retrieval Augmented Generation with state-of-the-art Groq hardware
+          </h2>
       </header>
-
-
       {/* Cards Section */}
       <div className="flex justify-center items-center flex-grow">
         <div className="flex flex-wrap gap-4 justify-center p-8">
