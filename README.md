@@ -2,7 +2,8 @@
 
 Welcome to the Gen AI Educational and Utility Assistant project! This platform provides multiple AI-powered tools to assist with various tasks such as educational search, LeetCode assistance, text summarization, and more. The project leverages advanced generative AI models like `Llama3-8b-8192` and `Mixtral-8x7b-32768` to deliver precise and meaningful results.
 
---
+---
+
 ## Project Website
 https://ragnagroq.onrender.com/
 
