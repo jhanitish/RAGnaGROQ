@@ -18,7 +18,7 @@ const SearchEngine = () => {
     { role: 'assistant', content: "Hi, I'm a chatbot who can search the ArXiv, Wikipedia and Web for education related assistant. Please submit your Groq API key to start chatting." }
   ]);
   const [input, setInput] = useState('');
-  const [apiKey, setApiKey] = useState('');
+  const [apiKey, setApiKey] = useState('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');
   const [isKeyValidated, setIsKeyValidated] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');

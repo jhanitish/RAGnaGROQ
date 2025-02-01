@@ -27,7 +27,7 @@ const LeetCodeAssistant = () => {
   ]);
   
   const [isMobileSidebarOpen, setMobileSidebarOpen] = useState(false);
-  const [apiKey, setApiKey] = useState('');
+  const [apiKey, setApiKey] = useState('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');
   const [isKeyValidated, setIsKeyValidated] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
