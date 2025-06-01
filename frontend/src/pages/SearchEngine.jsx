@@ -13,7 +13,6 @@ const API_URL = 'https://ragnagroq-backend.onrender.com/api';
 
 const SearchEngine = (props) => {
   const {
-    groqKeyReadOnly = true,
     groqKey='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'
   } = props;
   const [isMobileSidebarOpen, setMobileSidebarOpen] = useState(false)
@@ -151,7 +150,6 @@ const SearchEngine = (props) => {
               onChange={(e) => setApiKey(e.target.value)}
               disabled={isKeyValidated}
               className="mb-2"
-              readOnly={groqKeyReadOnly}
             />
             <Button 
               onClick={handleApiValidation} 
@@ -200,7 +198,6 @@ const SearchEngine = (props) => {
               onChange={(e) => setApiKey(e.target.value)}
               disabled={isKeyValidated}
               className="mb-2"
-              readOnly={groqKeyReadOnly}
             />
             <Button 
               onClick={handleApiValidation} 
