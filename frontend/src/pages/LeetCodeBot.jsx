@@ -17,7 +17,8 @@ import clsx from 'clsx';
 // const API_URL = 'http://localhost:8000/api';
 const API_URL = 'https://ragnagroq-backend.onrender.com/api';
 
-const LeetCodeAssistant = () => {
+const LeetCodeAssistant = (props) => {
+  const {groqKeyReadOnly = true} = props;
   const [activeTab, setActiveTab] = useState('hints');
   const [messages, setMessages] = useState([
     {
@@ -199,6 +200,7 @@ const LeetCodeAssistant = () => {
               onChange={(e) => setApiKey(e.target.value)}
               disabled={isKeyValidated}
               className="mb-2"
+              readOnly={groqKeyReadOnly}
             />
             <Button 
               onClick={handleApiValidation} 
@@ -224,6 +226,9 @@ const LeetCodeAssistant = () => {
                 Reset API Key
               </Button>
             )}
+            <div className="groq_message">
+              Click on the submit button to start using the app.
+            </div>
           </div>
         </CardContent>
       </div>
@@ -244,6 +249,7 @@ const LeetCodeAssistant = () => {
               onChange={(e) => setApiKey(e.target.value)}
               disabled={isKeyValidated}
               className="mb-2"
+              readOnly={groqKeyReadOnly}
             />
             <Button 
               onClick={handleApiValidation} 
