@@ -12,7 +12,10 @@ import clsx from 'clsx';
 const API_URL = 'https://ragnagroq-backend.onrender.com/api';
 
 const SearchEngine = (props) => {
-  const {groqKeyReadOnly = true, groqKey} = props;
+  const {
+    groqKeyReadOnly = true,
+    groqKey='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'
+  } = props;
   const [isMobileSidebarOpen, setMobileSidebarOpen] = useState(false)
   const [messages, setMessages] = useState([
     { role: 'assistant', content: "Hi, I'm a chatbot who can search the ArXiv, Wikipedia and Web for education related assistant. Please submit your Groq API key to start chatting." }
