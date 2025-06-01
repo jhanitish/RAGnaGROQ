@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import SearchEngine from './pages/SearchEngine';
 import LeetCodeAssistant from './pages/LeetCodeBot';
+import "./App.css";
 
 const App = () => {
   return (

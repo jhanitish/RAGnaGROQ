@@ -17,7 +17,10 @@ import clsx from 'clsx';
 // const API_URL = 'http://localhost:8000/api';
 const API_URL = 'https://ragnagroq-backend.onrender.com/api';
 
-const LeetCodeAssistant = () => {
+const LeetCodeAssistant = (props) => {
+  const {
+    groqKey='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'
+  } = props;
   const [activeTab, setActiveTab] = useState('hints');
   const [messages, setMessages] = useState([
     {
@@ -27,7 +30,7 @@ const LeetCodeAssistant = () => {
   ]);
   
   const [isMobileSidebarOpen, setMobileSidebarOpen] = useState(false);
-  const [apiKey, setApiKey] = useState('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');
+  const [apiKey, setApiKey] = useState('xmE0LdGy4HN8TH41Cld8WGdyb3FYwSCitNzvpjyq3RpLF5Acui6v');
   const [isKeyValidated, setIsKeyValidated] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
@@ -69,7 +72,7 @@ const LeetCodeAssistant = () => {
       const response = await fetch(`${API_URL}/validate-key`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ api_key: apiKey }),
+        body: JSON.stringify({ api_key: groqKey }),
       });
 
       if (!response.ok) throw new Error('Invalid API key');
@@ -95,7 +98,7 @@ const LeetCodeAssistant = () => {
       const response = await fetch(`${API_URL}/problem-hint`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ api_key: apiKey, problem: problemId }),
+        body: JSON.stringify({ api_key: groqKey, problem: problemId }),
       });
       const data = await response.json();
       setProblemHints(data.hints);
@@ -118,7 +121,7 @@ const LeetCodeAssistant = () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          api_key: apiKey,
+          api_key: groqKey,
           code: codeInput,
           language: programmingLanguage,
           problem_id: problemId ? parseInt(problemId) : null
@@ -145,7 +148,7 @@ const LeetCodeAssistant = () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          api_key: apiKey,
+          api_key: groqKey,
           topics: selectedTopics,
           duration_weeks: durationWeeks
         }),
@@ -224,6 +227,9 @@ const LeetCodeAssistant = () => {
                 Reset API Key
               </Button>
             )}
+            <div className="groq_message">
+              Click on the submit button to start using the app.
+            </div>
           </div>
         </CardContent>
       </div>
@@ -244,6 +250,7 @@ const LeetCodeAssistant = () => {
               onChange={(e) => setApiKey(e.target.value)}
               disabled={isKeyValidated}
               className="mb-2"
+              readOnly={groqKeyReadOnly}
             />
             <Button 
               onClick={handleApiValidation} 
@@ -269,6 +276,9 @@ const LeetCodeAssistant = () => {
                 Reset API Key
               </Button>
             )}
+            <div className="groq_message">
+              Click on the submit button to start using the app.
+            </div>
           </div>
         </CardContent>
       </div>

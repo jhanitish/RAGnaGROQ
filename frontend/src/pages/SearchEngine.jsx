@@ -11,14 +11,16 @@ import clsx from 'clsx';
 // const API_URL = 'http://localhost:8000/api';
 const API_URL = 'https://ragnagroq-backend.onrender.com/api';
 
-const SearchEngine = () => {
-
+const SearchEngine = (props) => {
+  const {
+    groqKey='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'
+  } = props;
   const [isMobileSidebarOpen, setMobileSidebarOpen] = useState(false)
   const [messages, setMessages] = useState([
     { role: 'assistant', content: "Hi, I'm a chatbot who can search the ArXiv, Wikipedia and Web for education related assistant. Please submit your Groq API key to start chatting." }
   ]);
   const [input, setInput] = useState('');
-  const [apiKey, setApiKey] = useState('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');
+  const [apiKey, setApiKey] = useState('xmE0LdGy4HN8TH41Cld8WGdyb3FYwSCitNzvpjyq3RpLF5Acui6v');
   const [isKeyValidated, setIsKeyValidated] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
@@ -47,7 +49,7 @@ const SearchEngine = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          api_key: apiKey,
+          api_key: groqKey,
         }),
       });
 
@@ -89,7 +91,7 @@ const SearchEngine = () => {
             role: msg.role,
             content: msg.content
           })),
-          api_key:apiKey
+          api_key:groqKey
         }),
       });
 
@@ -173,6 +175,9 @@ const SearchEngine = () => {
                 Reset API Key
               </Button>
             )}
+            <div className="groq_message">
+              Click on the submit button to start using the app.
+            </div>
           </div>
         </CardContent>
       </div>
@@ -218,6 +223,9 @@ const SearchEngine = () => {
                 Reset API Key
               </Button>
             )}
+            <div className="groq_message">
+              Click on the submit button to start using the app.
+            </div>
           </div>
         </CardContent>
       </div>
