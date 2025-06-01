@@ -250,7 +250,6 @@ const LeetCodeAssistant = (props) => {
               onChange={(e) => setApiKey(e.target.value)}
               disabled={isKeyValidated}
               className="mb-2"
-              readOnly={groqKeyReadOnly}
             />
             <Button 
               onClick={handleApiValidation} 
